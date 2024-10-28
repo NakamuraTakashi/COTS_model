@@ -1,0 +1,24 @@
+netcdf larvae_his {
+
+dimensions:
+	xi_rho = 302 ;
+	eta_rho = 302 ;
+	larval_time = 15 ; // (0 currently)
+
+variables:
+	double larval_time(larval_time) ;
+		larval_time:long_name = "time since initialization" ;
+		larval_time:units = "days since 2000-06-01 00:00:00" ;
+		larval_time:field = "time, scalar, series" ;
+	double larvae(larval_time, eta_rho, xi_rho) ;
+		larvae:long_name = "Larval recruitment rate" ;
+		larvae:units = "individuals m-2" ;
+		larvae:time = "larval_time" ;
+		larvae:field = "Larval-recruitment, scalar, series" ;
+
+// global attributes:
+		:type = "COTS model input file" ;
+		:title = "Larval recruitment rate" ;
+		:grd_file = "Yaeyama2_grd_v9.nc" ;
+
+}
